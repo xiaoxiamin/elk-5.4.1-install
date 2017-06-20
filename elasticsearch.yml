@@ -1,0 +1,10 @@
+[root@localhost ~]# grep -vE '^$|#' /usr/local/elasticsearch/config/elasticsearch.yml 
+path.data: /elasticsearch/data
+path.logs: /elasticsearch/logs
+bootstrap.memory_lock: false
+bootstrap.system_call_filter: false
+network.host: 0.0.0.0
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+http.port: 9200
+
