@@ -1,0 +1,4 @@
+[root@localhost ~]# grep -vE '^($|#)' /etc/kibana/kibana.yml 
+server.port: 5601
+server.host: "192.168.1.179"
+elasticsearch.url: "http://192.168.1.151:9200"
