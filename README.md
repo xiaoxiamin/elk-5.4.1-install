@@ -1,6 +1,6 @@
 # elk-Configuration-instance
 
-es官网：https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html
+es官网文档：https://www.elastic.co/guide/index.html
 
  filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
  
