@@ -4,6 +4,39 @@
  
  # Install ELK
  
+ ## Preparation before installation：
+ 
+ install jdk8+
+ 
+### vi /etc/security/limits.conf 
+```
+* soft nofile 65536
+
+* hard nofile 131072
+
+* soft nproc 2048
+
+* hard nproc 4096
+```
+ ### vi /etc/security/limits.d/90-nproc.conf 
+
+修改如下内容：
+
+`* soft nproc 1024`
+
+#修改为
+
+`* soft nproc 2048`
+
+### vi /etc/sysctl.conf 
+
+添加下面配置：
+
+`vm.max_map_count=655360`
+
+并执行命令：`sysctl -p`
+
+ 
  ## 1.install filebeat
  
  download filebeat :
@@ -14,7 +47,7 @@
  
  tar zxvf filebeat-5.4.1-linux-x86_64.tar.gz
  
- nohup ./filebeat-5.4.1-linux-x86_64/filebeat -e -c filebeat-5.4.1-linux-x86_64/filebeat.yml &
+ `nohup ./filebeat-5.4.1-linux-x86_64/filebeat -e -c filebeat-5.4.1-linux-x86_64/filebeat.yml &`
   
  ## 2.install logstash
  
@@ -26,8 +59,8 @@
  
  tar zxvf logstash-5.4.1.tar.gz
  
- nohup /usr/local/logstash/bin/logstash -f /usr/local/logstash/config/nginx.conf &
- 
+ `nohup /usr/local/logstash/bin/logstash -f /usr/local/logstash/config/nginx.conf &`
+
 
  ## 3.install elasticsearch
  
@@ -45,8 +78,22 @@
  
  su - es 
  
-./elasticsearch-5.4.1/bin/elasticsearch -d
+`./elasticsearch-5.4.1/bin/elasticsearch -d`
+
+ #### ERROR:
  
+ system call filters failed to install; check the logs and fix your configuration or disable system call filters at your own risk
+
+原因：
+这是在因为Centos6不支持SecComp，而ES5.2.0默认bootstrap.system_call_filter为true进行检测，所以导致检测失败，失败后直接导致ES不能启动。
+
+解决：
+在elasticsearch.yml中配置bootstrap.system_call_filter为false，注意要在Memory下面:
+```
+bootstrap.memory_lock: false
+bootstrap.system_call_filter: false
+``` 
+  
   ## 4.install kibana
   
   download kibana:
@@ -57,7 +104,7 @@
   
   rpm -ivh kibana-5.4.1-x86_64.rpm
   
-  service kibana start
+  `service kibana start`
  
 ## 5.install plugin
 
