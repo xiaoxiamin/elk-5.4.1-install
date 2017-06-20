@@ -41,9 +41,11 @@
   rpm -ivh kibana-5.4.1-x86_64.rpm
   service kibana start
  
-## install plugin
+## 5.install plugin
 
 wget https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-5.2.2.zip
+
 bin/elasticsearch-plugin install x-pack
+
 bin/kibana-plugin install x-pack
 
