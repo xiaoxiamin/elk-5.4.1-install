@@ -127,3 +127,7 @@ bin/elasticsearch-plugin install x-pack
 bin/kibana-plugin install x-pack
 
 elk docker版本：http://elk-docker.readthedocs.io/
+
+## kibana实现效果：
+
+![images](https://github.com/xiaoxiamin/elk-Configuration-instance/blob/master/picture/QQ%CD%BC%C6%AC20170620183704.png)
