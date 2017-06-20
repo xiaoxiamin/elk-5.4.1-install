@@ -1,0 +1,13 @@
+[root@localhost ~]# grep -vE '^$|#' filebeat-5.4.1-linux-x86_64/filebeat.yml
+filebeat.prospectors:
+- input_type: log
+  paths:
+    - /var/log/nginx/access.log
+output.logstash:
+  hosts: ["192.168.1.137:5044"]
+  loadbalance: true
+  index: filebeat-node1
+logging:
+ files:
+ rotateeverybytes: 10485760 # = 10MB
+ 
