@@ -45,7 +45,7 @@
  
  su - es 
  
- nohup ./elasticsearch-5.4.1/bin/elasticsearch &
+./elasticsearch-5.4.1/bin/elasticsearch -d
  
   ## 4.install kibana
   
