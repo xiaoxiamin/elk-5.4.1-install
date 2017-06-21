@@ -14,13 +14,11 @@ es官网文档：https://www.elastic.co/guide/index.html
  
  kibana: 可视化数据，图形展示，用于配置和管理Elastic Stack的可扩展用户界面
  
- # Install ELK
- 
  ## Preparation before installation：
  
- install jdk8+
+ ### 1.install jdk8+
  
-### vi /etc/security/limits.conf 
+### 2.vim /etc/security/limits.conf 
 ```
 * soft nofile 65536
 
@@ -30,7 +28,7 @@ es官网文档：https://www.elastic.co/guide/index.html
 
 * hard nproc 4096
 ```
- ### vi /etc/security/limits.d/90-nproc.conf 
+ ### 3.vim /etc/security/limits.d/90-nproc.conf 
 
 修改如下内容：
 
@@ -40,7 +38,7 @@ es官网文档：https://www.elastic.co/guide/index.html
 
 `* soft nproc 2048`
 
-### vi /etc/sysctl.conf 
+### 4.vim /etc/sysctl.conf 
 
 添加下面配置：
 
@@ -48,6 +46,8 @@ es官网文档：https://www.elastic.co/guide/index.html
 
 并执行命令：`sysctl -p`
 
+ 
+ # Install ELK
  
  ## 1.install filebeat
  
