@@ -1,4 +1,4 @@
-# elk-Configuration-instance
+# elk-configuration-instance
 
 es官网文档：https://www.elastic.co/guide/index.html
 
