@@ -1,0 +1,38 @@
+### timestamp
+
+使用ELK组件从Kibana4中查看日志数据，以某个时间字段为timestam时发现所有时间都被自动提前了八个小时。
+
+虽然是小问题，但是很头疼，因为作为基线的时间和实际情况有误差，那日志就没法看了。
+
+
+
+查看Kibana4的json数据格式可以发现所有时间字符串都被Elasticsearch转换成了长整型：
+
+
+"fields": {
+    "@timestamp": [
+      1442214581048
+    ]
+
+其source的时间值为想要的：
+
+"@timestamp": "2015-09-14T07:09:41.048Z"
+
+这是因为Elasticsearch在处理时间字符串时默认按UTC时间，如果没有指定额外信息的话。
+
+
+
+因此，如果按照北京时间处理的话，就得需要加上08:00
+
+在logstash的配置中可以使用mutate过滤器对输入Elasticsearch的时间字段做如下过滤：
+
+  mutate{
+        gsub => [
+       "time", "[+]", "T"
+                 ]
+      } 
+        mutate{
+      replace => ["time","%{time}+08:00"]
+      }
+
+注意，其中T为日期和时间之间的分隔符，Elasticsearch可以识别进行处理。
