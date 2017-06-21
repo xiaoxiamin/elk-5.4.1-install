@@ -55,6 +55,10 @@ es官网文档：https://www.elastic.co/guide/index.html
  
  wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.1-x86_64.rpm
  
+ rpm -ivh filebeat-5.4.1-x86_64.rpm
+ 
+ or
+ 
  wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.4.1-linux-x86_64.tar.gz 
  
  tar zxvf filebeat-5.4.1-linux-x86_64.tar.gz
@@ -66,6 +70,10 @@ es官网文档：https://www.elastic.co/guide/index.html
  download logstash:
  
  wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.1.rpm
+ 
+ rpm -ivh logstash-5.4.1.rpm
+ 
+ or
  
  wget https://artifacts.elastic.co/downloads/logstash/logstash-5.4.1.tar.gz
  
@@ -79,6 +87,10 @@ es官网文档：https://www.elastic.co/guide/index.html
  download es:
  
  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.rpm
+ 
+ rpm -ivh elasticsearch-5.4.1.rpm
+ 
+ or
  
  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.tar.gz
  
@@ -111,6 +123,10 @@ bootstrap.system_call_filter: false
   download kibana:
   
   wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.1-linux-x86_64.tar.gz
+  
+  tar zxvf kibana-5.4.1-linux-x86_64.tar.gz
+  
+  or
   
   wget https://artifacts.elastic.co/downloads/kibana/kibana-5.4.1-x86_64.rpm
   
