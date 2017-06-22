@@ -8,7 +8,7 @@ es官网文档：https://www.elastic.co/guide/index.html
  
  filebeat: 收集日志，将数据发送到Logstash和Elasticsearch
  
- logstash: 收集、转换和解析日志
+ logstash: 收集、转换、过滤和解析日志
  
  Elasticsearch: 是一种分布式，基于JSON的搜索和分析引擎，旨在提供水平可扩展性，最高可靠性和易于管理。（搜索、分析和存储数据）
  
