@@ -1,4 +1,4 @@
-# elk-configuration-instance
+# elk-5.4.1版本配置实例
 
 es官网文档：https://www.elastic.co/guide/index.html
 
@@ -21,6 +21,57 @@ elk中文文档：https://kibana.logstash.es/content/
 
 elk docker版本：http://elk-docker.readthedocs.io/
 
+## lostash配置
+
+### input插件可使用file、stdin、redis、beats等，以下实例使用beats，开放本机5044端口提供给beat连接并接收feat发送的数据。
+```       input {
+           beats {
+            port => 5044
+           }
+          }
+```
+### filter插件
+
+```
+ grok {
+  match => { 'message' => '%{IPV4:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:time}\] "%{WORD:method} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:http_status} %{NUMBER:bytes} %{QS:http_referer} %{QS:user_agent} %{QS:x_forwarded_for}' }
+ }
+```
+使用grok正则匹配nginx的访问日志，匹配每一段的内容定义别名
+
+```
+    mutate{
+        gsub => [
+       "time", "[+]", "T"
+                 ]
+      }
+        mutate{
+      replace => ["time","%{time}+08:00"]
+      }
+}
+
+```
+此部分针对es的时区utc的问题，给默认时间加8小时。
+
+### output插件
+
+```
+output {
+ elasticsearch {
+ hosts => ["192.168.1.151:9200"]
+ user => elastic
+ password => changeme
+ manage_template => false
+ index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+ document_type => "%{[@metadata][type]}"
+ flush_size => 20000
+ idle_flush_time => 10
+ }
+}
+```
+将filter处理后的日志发送到elasticsearch中，指定index 默认索引以logstash-localtime。
+
+### filebeat、elasticsearch、kibana的配置可参考上面其对应的配置文件
 
 ### kibana实现效果：
 
