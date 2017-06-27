@@ -2,6 +2,8 @@
 
 es官网文档：https://www.elastic.co/guide/index.html
 
+elk中文文档：https://kibana.logstash.es/content/
+
  filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
  
  ![image](https://github.com/xiaoxiamin/elk-Configuration-instance/blob/master/picture/QQ%CD%BC%C6%AC20170620160929.png)
@@ -146,7 +148,7 @@ bin/kibana-plugin install x-pack
 
 elk docker版本：http://elk-docker.readthedocs.io/
 
-## kibana实现效果：
+### kibana实现效果：
 
 ![images](https://github.com/xiaoxiamin/elk-Configuration-instance/blob/master/picture/QQ%CD%BC%C6%AC20170627142423.png)
 
