@@ -4,6 +4,8 @@ es官网文档：https://www.elastic.co/guide/index.html
 
 elk中文文档：https://kibana.logstash.es/content/
 
+elk docker版本：http://elk-docker.readthedocs.io/
+
 本实例使用的各软件版本：
 
 filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
@@ -19,8 +21,6 @@ filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
  
  - `kibana`: 可视化数据，图形展示，用于配置和管理Elastic Stack的可扩展用户界面
 
-
-elk docker版本：http://elk-docker.readthedocs.io/
 
 ## lostash配置
 
