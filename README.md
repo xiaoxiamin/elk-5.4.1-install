@@ -23,13 +23,16 @@ elk docker版本：http://elk-docker.readthedocs.io/
 
 ## lostash配置
 
-### input插件可使用file、stdin、redis、beats等，以下实例使用beats，开放本机5044端口提供给beat连接并接收feat发送的数据。
+### input插件
+
 ```       input {
            beats {
             port => 5044
            }
           }
 ```
+以上例子使用beats插件，开放本机5044端口提供给beat连接并接收feat发送的数据，也可使用file、stdin、redis、beats等其他插件，具体每个插件的参数可参考官网文档。
+
 ### filter插件
 
 ```
@@ -71,7 +74,7 @@ output {
 ```
 将filter处理后的日志发送到elasticsearch中，指定index 默认索引以logstash-localtime。
 
-### filebeat、elasticsearch、kibana的配置可参考上面其对应的配置文件
+#### filebeat、elasticsearch、kibana的配置可参考上面其对应的配置文件
 
 ### kibana实现效果：
 
