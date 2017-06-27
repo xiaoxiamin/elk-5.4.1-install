@@ -26,22 +26,26 @@ elk docker版本：http://elk-docker.readthedocs.io/
 
 ### input插件
 
+以下例子使用beats插件，开放本机5044端口提供给beat连接并接收beats发送的数据，也可使用file、stdin、redis、beats等其他插件，具体每个插件的参数可参考官网文档。
+
 ```       input {
            beats {
             port => 5044
            }
           }
 ```
-以上例子使用beats插件，开放本机5044端口提供给beat连接并接收beats发送的数据，也可使用file、stdin、redis、beats等其他插件，具体每个插件的参数可参考官网文档。
 
 ### filter插件
+
+使用grok正则匹配nginx的访问日志，匹配每一段的内容定义别名：
 
 ```
  grok {
   match => { 'message' => '%{IPV4:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:time}\] "%{WORD:method} %{URIPATHPARAM:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:http_status} %{NUMBER:bytes} %{QS:http_referer} %{QS:user_agent} %{QS:x_forwarded_for}' }
  }
 ```
-使用grok正则匹配nginx的访问日志，匹配每一段的内容定义别名
+
+此部分针对es的时区utc的问题，给默认时间加8小时：
 
 ```
     mutate{
@@ -55,9 +59,10 @@ elk docker版本：http://elk-docker.readthedocs.io/
 }
 
 ```
-此部分针对es的时区utc的问题，给默认时间加8小时。
 
 ### output插件
+
+将filter处理后的日志发送到elasticsearch中，指定index 默认索引以logstash-localtime：
 
 ```
 output {
@@ -73,9 +78,9 @@ output {
  }
 }
 ```
-将filter处理后的日志发送到elasticsearch中，指定index 默认索引以logstash-localtime。
 
-#### filebeat、elasticsearch、kibana的配置可参考上面其对应的配置文件
+
+#### filebeat、elasticsearch、kibana的配置可参考项目中对应的配置文件
 
 ### kibana实现效果：
 
