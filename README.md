@@ -4,7 +4,9 @@ es官网文档：https://www.elastic.co/guide/index.html
 
 elk中文文档：https://kibana.logstash.es/content/
 
- filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
+本实例使用的各软件版本：
+
+filebeat 5.4.1 + logstash 5.4.1 + elasticsearch 5.4.1 + kibana 5.4.1
  
  ![image](https://github.com/xiaoxiamin/elk-Configuration-instance/blob/master/picture/QQ%CD%BC%C6%AC20170620160929.png)
  
@@ -12,7 +14,7 @@ elk中文文档：https://kibana.logstash.es/content/
  
  logstash: 收集、转换、过滤和解析日志  (插件化：input、codec、filter、output)
         
-               工作流程：input | filter | output
+                    工作流程：input | filter | output
            
  Elasticsearch: 是一种分布式，基于JSON的搜索和分析引擎，旨在提供水平可扩展性，最高可靠性和易于管理。（搜索、分析和存储数据）
  
@@ -31,7 +33,7 @@ elk docker版本：http://elk-docker.readthedocs.io/
            }
           }
 ```
-以上例子使用beats插件，开放本机5044端口提供给beat连接并接收feat发送的数据，也可使用file、stdin、redis、beats等其他插件，具体每个插件的参数可参考官网文档。
+以上例子使用beats插件，开放本机5044端口提供给beat连接并接收beats发送的数据，也可使用file、stdin、redis、beats等其他插件，具体每个插件的参数可参考官网文档。
 
 ### filter插件
 
