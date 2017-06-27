@@ -11,3 +11,4 @@ logging:
  files:
  rotateeverybytes: 10485760 # = 10MB
  
+#paths 指定要收集日志的路径
