@@ -1,3 +1,4 @@
+
 [root@localhost ~]# grep -vE '^$|#' /usr/local/elasticsearch/config/elasticsearch.yml 
 path.data: /elasticsearch/data
 path.logs: /elasticsearch/logs
