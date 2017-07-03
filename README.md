@@ -84,3 +84,5 @@ output {
 
 ### dashboard实现效果：
 ![images](https://github.com/xiaoxiamin/elk-Configuration-instance/blob/master/picture/QQ%CD%BC%C6%AC20170627142838.png)
+
+#### 个人实践，如有问题欢迎提交lssues,或 PR 修改补充。
