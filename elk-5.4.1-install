@@ -137,6 +137,6 @@ Install ELK  （每个软件的版本需统一）
 
                         bin/elasticsearch-plugin install x-pack
 
-                  安装插件在kibana:
+                  安装插件在kibana中:
                   
                         bin/kibana-plugin install x-pack
