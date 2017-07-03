@@ -1,3 +1,4 @@
+
 [root@localhost ~]# grep -vE '^$|#' filebeat-5.4.1-linux-x86_64/filebeat.yml
 filebeat.prospectors:
 - input_type: log
